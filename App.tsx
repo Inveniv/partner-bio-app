@@ -1,18 +1,28 @@
-import Providers from "components/providers/Providers";
-import AppNavigator from "navigation/AppNavigator";
-import React, { JSX } from "react";
-import { LogBox } from "react-native";
-LogBox.ignoreLogs([
-  "TextInput.Icon: Support for defaultProps",
-  "[Reanimated] Tried to modify key",
-]); // Ignore log notification by message
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
 
-function App(): JSX.Element {
+import { NewAppScreen } from '@react-native/new-app-screen';
+import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+
+function App() {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
-    <Providers>
-      <AppNavigator />
-    </Providers>
+    <View style={styles.container}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <NewAppScreen templateFileName="App.tsx" />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;
